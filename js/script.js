@@ -1,25 +1,12 @@
 //? DOM ELEMENTS
+const errorText = document.getElementById("error-text");
+const errorAlert = document.getElementById("error-alert");
+const loadingAlert = document.getElementById("loading-alert");
+const emailCard = document.getElementById("email-list-card");
 const emailList = document.getElementById("email-list");
-const newGenButton = document.getElementById("new-gen-button");
+const genMailBox = document.getElementById("gen-mail-box");
+const numberInput = document.getElementById("number-input");
+const genButton = document.getElementById("gen-button");
 
-//? GENERAL VARIABLES
-const emailNumber = 10;
-
-newGenButton.addEventListener("click", generateMail);
-
-function generateMail(whoManyEmail) {
-  emailList.innerHTML = "";
-
-  for (let i = 0; i < emailNumber; i++) {
-    axios
-      .get("https://flynn.boolean.careers/exercises/api/random/mail")
-      .then((res) => {
-        const randomEmail = res.data.response;
-        emailList.innerHTML += `
-            <li class="email-item">
-              <a href="mailto:${randomEmail}">${randomEmail}</a>
-            </li>
-          `;
-      });
-  }
-}
+//? EVENTS
+genMailBox.addEventListener("submit", handlegenerateMail);

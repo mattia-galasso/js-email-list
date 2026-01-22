@@ -42,17 +42,51 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <!-- CUSTOM SCRIPT -->
+    <script src="./js/function.js" defer></script>
     <script src="./js/script.js" defer></script>
   </head>
   <body>
     <div class="wrapper">
-      <header class="my-4 page-header text-center">
-        <h1>Email List</h1>
+      <header class="my-2 py-2 page-header text-center border-bottom">
+        <h1>📧 Generatore di E-Mail Randomiche 📧</h1>
       </header>
       <main class="page-main">
         <div class="my-4 text-center container">
-          <ul id="email-list"></ul>
-          <button id="new-gen-button">Genera Nuove</button>
+          <!-- ALERT -->
+          <div class="d-none alert alert-warning alert-box" id="loading-alert">
+            <div class="spinner-border text-danger" role="status"></div>
+            <span class="alert-text">CARICAMENTO...</span>
+          </div>
+          <div class="d-none alert alert-danger alert-box" id="error-alert">
+            <span class="alert-text" id="error-text"></span>`
+          </div>
+
+          <!-- LISTA MAIL -->
+          <div class="d-none card my-4" id="email-list-card">
+            <div class="card-header">
+              <h2 class="card-title">⬇️ E-mail Generate ⬇️</h2>
+            </div>
+            <ul class="list-group list-group-flush" id="email-list"></ul>
+          </div>
+
+          <!-- FORM -->
+          <form id="gen-mail-box">
+            <div class="email-number-input">
+              <label for="number-input">Quante E-Mail vuoi generare?</label>
+              <input
+                type="number"
+                name="number-input"
+                id="number-input"
+                value="10"
+                min="1"
+                max="20"
+                required
+              />
+            </div>
+            <button class="btn btn-success" id="gen-button">
+              Genera E-Mail
+            </button>
+          </form>
         </div>
       </main>
       <footer class="page-footer"></footer>

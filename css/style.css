@@ -1,0 +1,40 @@
+/* RESET */
+li {
+  list-style-type: none;
+}
+
+/* ALERT BOX */
+.alert-box {
+  margin: 2rem auto;
+  width: 45rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.alert-text {
+  font-weight: bold;
+}
+
+/* LISTA MAIL */
+#email-list-card {
+  margin: 0 auto;
+  width: 45rem;
+}
+
+/* FORM NUMBER INPUT */
+#gen-mail-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.email-number-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
