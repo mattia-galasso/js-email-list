@@ -8,5 +8,8 @@ const genMailBox = document.getElementById("gen-mail-box");
 const numberInput = document.getElementById("number-input");
 const genButton = document.getElementById("gen-button");
 
+//? GENERAL VARIABLES
+const receivedEmails = [];
+
 //? EVENTS
 genMailBox.addEventListener("submit", handlegenerateMail);

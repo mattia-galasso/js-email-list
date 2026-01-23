@@ -4,6 +4,7 @@
  */
 function handlegenerateMail(e) {
   e.preventDefault();
+  emailCard.classList.add("d-none");
   loadingAlert.classList.remove("d-none");
   const emailNumber = numberInput.value;
   generateMail(emailNumber);
@@ -14,20 +15,34 @@ function handlegenerateMail(e) {
  * @param {number} isEMailNumber email number inserted in the DOM
  */
 function generateMail(isEMailNumber) {
-  emailCard.classList.add("d-none");
-  emailList.innerHTML = "";
+  const receivedEmails = [];
+
   for (let i = 0; i < isEMailNumber; i++) {
     axios
       .get("https://flynn.boolean.careers/exercises/api/random/mail")
       .then((res) => {
         const randomEmail = res.data.response;
-        emailList.innerHTML += `
-          <li class="text-center list-group-item email-item">
-            <a href="mailto:${randomEmail}">${randomEmail}</a>
-          </li>
-        `;
-        loadingAlert.classList.add("d-none");
-        emailCard.classList.remove("d-none");
+        receivedEmails.push(randomEmail);
+
+        console.log(randomEmail);
+        console.log(
+          `ricevute ${receivedEmails.length}/${isEMailNumber} emails`,
+        );
+        if (receivedEmails.length >= isEMailNumber) {
+          console.log("tutte le email ricevute");
+
+          let emailHTML = ``;
+          for (const email of receivedEmails) {
+            emailHTML += `
+            <li class="text-center list-group-item email-item">
+              <a href="mailto:${email}">${email}</a>
+            </li>
+            `;
+          }
+          emailList.innerHTML = emailHTML;
+          loadingAlert.classList.add("d-none");
+          emailCard.classList.remove("d-none");
+        }
       })
       .catch((error) => {
         const errorMessage = error.message;
